@@ -1,8 +1,4 @@
 const database = require('../mysql/db.js')
-const fs = require('fs')
-
-
-const pathProducts = __dirname+'/../files/products'
 
 class ProductManager {
     getAll = async () => {

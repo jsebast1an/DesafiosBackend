@@ -17,7 +17,7 @@ class PlayerManager {
 
     async getAll() {
         let users = await playersSchemaService.find({})
-        return {status: 'logrado' + users}
+        return {payload: users}
     }
 
     async deletePlayer(id) {

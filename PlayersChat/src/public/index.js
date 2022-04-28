@@ -11,8 +11,9 @@ form.addEventListener('submit', (e) => {
     form.reset()
 })
 
-socket.on('player',async data => {
-    console.log('logrado: ' + data)
+/* SHOW PLAYER */
+socket.on('player', data => {
+    console.log('logrado: ' + JSON.stringify(data))
     const cardsContainer = document.getElementById('cardsBox')
             const div1 = document.createElement("div") //creamos primer div para contener cards
             div1.className = "card m-3"
@@ -29,4 +30,30 @@ socket.on('player',async data => {
             cardsContainer.appendChild(div1)
 
 })
+
+/* SHOW ALL PLAYERS */
+const showPlayers = document.getElementById('showPlayers')
+
+socket.on('sendPlayers', data => {
+    const cardsContainer = document.getElementById('cardsBox')
+    cardsContainer.innerHTML = ''
+    data.forEach(player => {
+    const div1 = document.createElement("div") //creamos primer div para contener cards
+    div1.className = "card m-3"
+    div1.style.width = "18rem"
+    div1.innerHTML = `
+    <img src=${player.img} class="card-img-top" alt="..." max-width=300px max-height=280px >
+    <div class="card-body">
+        <h5 class="card-title">${player.player}</h5>
+        <p class="card-text"><strong>Posición:</strong> ${player.position}</p>
+        <p class="card-text"><strong>Calificación:</strong> ${player.calification}</p>
+        <a href="#" class="btn btn-primary">Más info</a>
+    </div>
+    `   
+    cardsContainer.appendChild(div1)
+    });
+} )
+
+
+
 
