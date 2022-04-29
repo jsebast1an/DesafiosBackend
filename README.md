@@ -1,5 +1,4 @@
-Tareas
-Cápsula de tareas del curso de Coderhouse -  Backend.
+Cápsula de desafios del curso de Coderhouse -  Backend.
 
 
 Agregá jugadores del mundial + chat: 
